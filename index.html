@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>出席簿</title>
+    <link rel='stylesheet' href='css/reset.css'>
+    <link rel='stylesheet' href='css/style.css'>
+</head>
+<body>
+    <!-- トリセツ画面 -->
+    <div class="setting4"></div>
+    <div class="setting1">♪トリセツ(^^♪</div>
+    <div class="setting2"
+        >出席管理システムを作りました（csv出力とかしたかった…）。<br>
+        画面には生徒用と先生用のユーザーインターフェースが表示されています。<br>
+        <br>
+        生徒が登校した時に音声入力をしてもらいます。<br>
+        生徒数は3名で、名前は下記のリストに記載されています。<br>
+        音声入力をすると登校した日時と遅刻・欠席の判定が表示・記録されます。<br>
+        ※ここでは便宜上、登校時間は8:30から9:29までの範囲でランダムに決まります。<br>
+        ※欠席になっても怒らないでくださいね(笑)<br>
+        <br>
+        学籍番号は名前が名簿のものと一致したときのみ表示・記録されます。<br>
+        先生方の負担が軽減され、生徒さんが気軽に相談できるようになるといいな。
+    </div>
+    <div class="setting3">授業開始9:00、遅刻は9:20まで、それ以降は欠席です。</div>
+    <div class="setting4"></div>
+
+    <!-- 名前リスト -->
+    <div class="sample">
+        名前リスト：  「あかね」   「楓」   「さくら」
+    </div>
+
+    <div class="layout">
+        <div class="studentInterface">
+            <p class="stInterface">生徒さん用画面</p>
+            <!-- input 名前 -->
+            <div class = "namaeIn">
+                <div class = "namae-com">お名前は？（マイクをクリックしてね）</div>
+                <div class = "microphone1">
+                    <img src="img/microphone.png" width="40px" height="40px" alt="マイク">
+                </div>
+            </div>
+
+
+            <!-- input 伝言 -->
+            <div class = "dengonIn">
+                <div class = "dengon-com">先生！あのね、（例「お腹すいた」）</div>
+                
+                <div class = "microphone2">
+                    <img src = "img/microphone.png" width="40px" height="40px" alt="マイク">
+                </div>
+            </div>
+
+            <!-- 結果出力 -->
+            <div class="sendingData">
+                <div class = "box">
+                    <div id = "namaeOut">お名前：</div>
+                    <div id = "no">出席番号：</div>
+                    <div id = "date">日付：</div>
+                    <div id = "time">時間：</div>
+                    <div id = "hantei">セーフ/遅刻/欠席</div>
+                    <div id = "dengonOut">伝言：</div>
+                </div>
+
+                <!-- 送信ボタン -->
+                <div>
+                    <button id="send">送信</button>
+                </div>
+            </div>
+        </div>
+        
+        <div class=teacherInterface>
+            <p class="stInterface">先生用画面</p>
+            <!-- 保存されたデータが表示される箇所 -->
+            <div>
+                <div id="outputToday">【本日の出欠】</div>
+                <div id="outputArchives">アーカイブ</div>
+                <p class="Archive0">あかねさんのアーカイブ</p>
+                <div id="outputArchive0"></div>
+                <p class="Archive0">楓さんのアーカイブ</p>
+                <div id="outputArchive1"></div>
+                <p class="Archive0">さくらさんのアーカイブ</p>
+                <div id="outputArchive2"></div>    
+            </div>            　
+        </div>
+    </div>
+
+    <!-- jQueryを読み込む！必ず先に！ -->
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+
+    <script src='js/app.js'></script>
+
+    <!--** 以下Firebase **-->
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+
+<script>
+  // Your web app's Firebase configuration
+  var firebaseConfig = {
+    apiKey: "",
+    authDomain: "",
+    projectId: "",
+    storageBucket: "",
+    messagingSenderId: "",
+    appId: "",
+    databaseURL: "",
+  };
+
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+</script>
+
+<!-- 長くなったので2個目のjsファイルを作りました -->
+    <script src='js/app2.js'></script>
+
+</body>
+</html>
